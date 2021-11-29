@@ -17,9 +17,47 @@ pipeline{
             }
             steps{
                 script{
-                    sh 'maven -v'
+                    sh 'ls -l'
+                    sh 'mvn clean install -DskipTests'
                 }
             }
+        }
+        stage('MAVEN-TEST'){
+            steps{
+                script{
+                    sh 'mvn test'
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh "exit 1"
+                }
+                }
+            }
+        }
+        stage('JAVA-Deploy'){
+            steps{
+                script{
+                    sh 'java -jar /var/jenkins_home/workspace/maven-job/target/*.jar'
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh "exit 1"
+                }
+                }
+            }
+        }
+        stage("Delete Docker images from Jenkins server"){
+            steps {
+			sh "docker image prune -f -a"
+                  }
+		
+		
+		
+		} 
+
+	}		
+ 
+    
+    post {
+        always {
+            cleanWs()
+            echo "Deleted Workspace..."
         }
     }
 }
