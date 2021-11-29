@@ -17,7 +17,8 @@ pipeline{
             }
             steps{
                 script{
-                    sh 'maven -v'
+                    sh 'ls -l'
+                    sh 'mvn -v'
                 }
             }
         }
