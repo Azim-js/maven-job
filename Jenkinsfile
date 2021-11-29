@@ -18,7 +18,21 @@ pipeline{
             steps{
                 script{
                     sh 'ls -l'
-                    sh 'mvn -v'
+                    sh 'mvn clean install -DskipTests'
+                }
+            }
+        }
+        stage('TEST'){
+            steps{
+                script{
+                    sh 'mvn test'
+                }
+            }
+        }
+        stage('Deploy'){
+            steps{
+                script{
+                    sh 'java -jar /var/jenkins_home/workspace/maven-job/target/*.jar'
                 }
             }
         }
