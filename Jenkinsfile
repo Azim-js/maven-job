@@ -22,7 +22,7 @@ pipeline{
                 }
             }
         }
-        stage('TEST'){
+        stage('MAVEN-TEST'){
             steps{
                 script{
                     sh 'mvn test'
@@ -32,7 +32,7 @@ pipeline{
                 }
             }
         }
-        stage('Deploy'){
+        stage('JAVA-Deploy'){
             steps{
                 script{
                     sh 'java -jar /var/jenkins_home/workspace/maven-job/target/*.jar'
@@ -53,7 +53,7 @@ pipeline{
 
 	}		
  
-    }
+    
     post {
         always {
             cleanWs()
