@@ -25,6 +25,7 @@ pipeline{
         stage('MAVEN-TEST'){
             steps{
                 script{
+		    echo "using a Docker mvn container to run the mvn compiler"	
                     sh 'mvn test'
                     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     sh "exit 1"
