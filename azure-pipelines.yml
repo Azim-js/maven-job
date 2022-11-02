@@ -20,3 +20,9 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: SonarQubePrepare@5
+  inputs:
+    SonarQube: 'azim_demo'
+    scannerMode: 'MSBuild'
+    projectKey: 'azim_demo_azim_demo_AYQ3VC5HsLbLJh9RPuN-'
+    projectName: 'azim_demo'
