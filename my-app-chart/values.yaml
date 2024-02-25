@@ -5,6 +5,6 @@ image:
   tag: latest
   pullPolicy: IfNotPresent
 service:
-  type: LoadBalancer
+  type: NodePort
   port: 80
   targetPort: 8080
