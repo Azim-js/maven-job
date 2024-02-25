@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "my-app-chart" . }}
+  name: "my-app-chart"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
