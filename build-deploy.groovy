@@ -30,9 +30,9 @@ pipeline {
             steps {
                 // Assuming Dockerfile is in the root directory of the project
                 script {
-                    sh "docker build -t public.ecr.aws/f2o8r3e9/azim:latest ."
+                    sh "docker build -t public.ecr.aws/h5h2j8v8/azim:latest ."
                     // Pushing the built Docker image to a Docker registry
-                    sh "docker push public.ecr.aws/f2o8r3e9/azim:latest"
+                    sh "docker push public.ecr.aws/h5h2j8v8/azim:latest"
                 }
             }
         }
