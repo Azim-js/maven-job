@@ -41,7 +41,8 @@ pipeline {
             steps {
                 // Assuming you have configured kubectl and authenticated to your EKS cluster
                 // Use kubectl to apply your Kubernetes manifests or Helm charts
-                sh "kubectl apply -f your_kubernetes_manifests_or_helm_charts"
+                sh "kubectl apply -f  deployment.yaml -n example"
+                sh "kubectl apply -f  service.yaml -n example"
             }
         }
     }
