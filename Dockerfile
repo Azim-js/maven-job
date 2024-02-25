@@ -1,11 +1,9 @@
-# Use a base image with Java already installed
-FROM openjdk:11-jre-slim
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
 
-# Set the working directory inside the container
-WORKDIR /app
+ARG JAR_FILE
+ADD target/spring-boot-hello-world-1.0.0-SNAPSHOT.jar app.jar
 
-# Copy the executable jar file from the host into the container at /app
-COPY target/*.jar /app/app.jar
-
-# Command to run the application
-CMD ["java", "-jar", "app.jar"]
+ENV JAR_OPTS=""
+ENV JAVA_OPTS=""
+ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar $JAR_OPTS
