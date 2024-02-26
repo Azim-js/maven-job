@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: my-app-container
-        image: public.ecr.aws/h5h2j8v8/azim:latest
+        image: public.ecr.aws/z3e7z4e4/azim:latest
         ports:
         - containerPort: 8080 # Assuming your application runs on port 8080
