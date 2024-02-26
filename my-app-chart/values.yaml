@@ -1,7 +1,7 @@
 # my-app-chart/values.yaml
 replicaCount: 3
 image:
-  repository: public.ecr.aws/h5h2j8v8/azim
+  repository: public.ecr.aws/z3e7z4e4/azim
   tag: latest
   pullPolicy: IfNotPresent
 service:
