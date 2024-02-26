@@ -2,10 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello
-  namespace: example
+  namespace: example-ingress
   annotations:
     kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/subnets: subnet-09d327eced3596056
+    alb.ingress.kubernetes.io/subnets: subnet-09d327eced3596056,subnet-0aafb07572d0cf6d6
     alb.ingress.kubernetes.io/scheme: internet-facing
 spec:
   ingressClassName: alb  # Replace kubernetes.io/ingress.class with spec.ingressClassName
