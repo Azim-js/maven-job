@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Run Maven to build the jar
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                sh "mvn clean install"
             }
             post {
                 success {
@@ -30,9 +30,9 @@ pipeline {
             steps {
                 // Assuming Dockerfile is in the root directory of the project
                 script {
-                    sh "docker build -t public.ecr.aws/h5h2j8v8/azim:latest ."
+                    sh "docker build -t public.ecr.aws/z3e7z4e4/azim:latest ."
                     // Pushing the built Docker image to a Docker registry
-                    sh "docker push public.ecr.aws/h5h2j8v8/azim:latest"
+                    sh "docker push public.ecr.aws/z3e7z4e4/azim:latest"
                 }
             }
         }
@@ -41,6 +41,7 @@ pipeline {
             steps {
                 // Assuming you have configured kubectl and authenticated to your EKS cluster
                 // Use kubectl to apply your Kubernetes manifests or Helm charts
+                sh "aws eks --region us-east-1 update-kubeconfig --name SBX"
                 sh "kubectl apply -f  deployment.yaml -n example"
                 sh "kubectl apply -f  service.yaml -n example"
             }
