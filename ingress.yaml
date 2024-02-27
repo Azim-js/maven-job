@@ -5,7 +5,7 @@ metadata:
   namespace: example-ingress
   annotations:
     kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/subnets: subnet-09d327eced3596056,subnet-0aafb07572d0cf6d6
+    alb.ingress.kubernetes.io/subnets: subnet-0cde0cd2e5c33aed0,subnet-0dca5753b02fb4f2e
     alb.ingress.kubernetes.io/scheme: internet-facing
 spec:
   ingressClassName: alb  # Replace kubernetes.io/ingress.class with spec.ingressClassName
